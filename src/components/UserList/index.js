@@ -1,17 +1,21 @@
 import React from 'react';
-import { List, Datagrid, TextField, EmailField, UrlField} from 'react-admin';
+import { List, Datagrid, TextField, EmailField } from 'react-admin';
 import UserFilters from 'components/UserFilter';
 import UserShow from 'components/UserShow';
+import CustomField from 'components/CustomField';
 
-const UserList = props => (
-  <List {...props} filters={<UserFilters />}>
+const UserList = props => {
+  return (
+    <List {...props} filters={<UserFilters />}>
       <Datagrid expand={<UserShow />} rowClick="expand">
           <TextField source="name" />
           <TextField source="username" />
           <EmailField source="email" />
-          <UrlField source="company.name" />
+          <CustomField source="company.name" label='Company' />
       </Datagrid>
-  </List>
-);
+    </List>
+  )
+}
+  
 
 export default UserList
